@@ -81,6 +81,9 @@ typedef struct{
 //=====[Declaration and initialization of public global objects]===============
 
 DigitalOut displayD0( D10 );
+#define D10_Pin GPIO_PIN_6
+#define D10_GPIO_Port GPIOB
+
 DigitalOut displayD1( D11 );
 DigitalOut displayD2( D2 );
 DigitalOut displayD3( D12 );
@@ -255,7 +258,11 @@ static void displayPinWrite( uint8_t pinName, int value )
     switch( display.connection ) {
         case DISPLAY_CONNECTION_GPIO_8BITS:
             switch( pinName ) {
-                case DISPLAY_PIN_D0: displayD0 = value;   break;
+                case DISPLAY_PIN_D0:
+                    // displayD0 = value;
+                    // HAL_GPIO_WritePin(gpio_port, pin, value);
+                    HAL_GPIO_WritePin((GPIO_TypeDef*)D10_GPIO_Port, (uint16_t)D10_Pin, (GPIO_PinState)value);
+                    break;
                 case DISPLAY_PIN_D1: displayD1 = value;   break;
                 case DISPLAY_PIN_D2: displayD2 = value;   break;
                 case DISPLAY_PIN_D3: displayD3 = value;   break;
