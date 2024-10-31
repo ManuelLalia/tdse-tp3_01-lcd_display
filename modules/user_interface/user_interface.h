@@ -5,6 +5,12 @@
 
 //=====[Declaration of public defines]=========================================
 
+#define TEST_0 (0)
+#define TEST_1 (1)
+#define TEST_2 (2)
+
+#define TEST_X (TEST_2)
+
 //=====[Declaration of public data types]======================================
 
 //=====[Declarations (prototypes) of public functions]=========================
