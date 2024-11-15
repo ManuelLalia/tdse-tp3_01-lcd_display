@@ -22,12 +22,6 @@
 
 //=====[Declaration and initialization of private global variables]============
 
-static bool incorrectCodeState = OFF;
-static bool systemBlockedState = OFF;
-
-static bool codeComplete = false;
-static int numberOfCodeChars = 0;
-
 //=====[Declarations (prototypes) of private functions]========================
 
 static void userInterfaceDisplayInit();
@@ -45,37 +39,13 @@ void userInterfaceUpdate()
     userInterfaceDisplayUpdate();
 }
 
-bool incorrectCodeStateRead()
-{
-    return incorrectCodeState;
-}
-
-void incorrectCodeStateWrite( bool state )
-{
-    incorrectCodeState = state;
-}
-
-bool systemBlockedStateRead()
-{
-    return systemBlockedState;
-}
-
-void systemBlockedStateWrite( bool state )
-{
-    systemBlockedState = state;
-}
-
-bool userInterfaceCodeCompleteRead()
-{
-    return codeComplete;
-}
-
-void userInterfaceCodeCompleteWrite( bool state )
-{
-    codeComplete = state;
-}
-
 //=====[Implementations of private functions]==================================
+
+#define TEST_0 (0)
+#define TEST_1 (1)
+#define TEST_2 (2)
+
+#define TEST_X (TEST_1)
 
 uint32_t contador;
 
@@ -113,7 +83,7 @@ static void userInterfaceDisplayUpdate()
         displayCharPositionWrite ( 14,0 );
         displayStringWrite( "'C" );
 
-        displayCharPositionWrite ( 4,1 );
+        // displayCharPositionWrite ( 4,1 );
 
     } else {
         accumulatedDisplayTime =
